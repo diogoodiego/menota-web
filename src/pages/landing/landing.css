@@ -1,0 +1,21 @@
+.landing-section .navbar{
+    height: 10vh;
+}
+.landing-section main{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+}
+.landing-section main .row{
+    display: flex;
+    align-items: center;
+}
+.landing-section footer{
+    height: 10vh;
+}
+.landing-section .btn{
+    color: var(--bg-one-1);
+}
+.landing-section .landing-icon{
+    width: 80%;
+}
