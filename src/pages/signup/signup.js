@@ -5,31 +5,34 @@ import { useCookies, Cookies } from 'react-cookie';
 import { FcGoogle} from "react-icons/fc";
 import { FiLogIn,FiArrowLeft } from "react-icons/fi";
 import { SiFacebook } from "react-icons/si";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import './signup.css'
 import LandingIcon from '../../svg/signup.svg';
 
 function Login() {
-    const [cookies, setCookie,removeCookie] = useCookies(['userToken']);
+    const [cookies] = useCookies(['userToken']);
     const [email,setEmail] = useState('');
-    const [name,setName] = useState('');
+    const [name, setName] = useState('');
+    const [message, setMessage] = useState('');
+    const [animation, setAnimation] = useState(false);
     const [password,setPassword] = useState('');
-    const history = useHistory();
 
     function Signup(e){
         e.preventDefault();
         console.log('here');
-        axios.post('http://127.0.0.1:8000/api/register',{name:name,email:email,password:password}).then(function (response) {
+        setAnimation(true);
+        axios.post('https://menota-api.herokuapp.com/api/register',{name:name,email:email,password:password}).then(function (response) {
             // handle success
-            setCookie('userToken','Bearer '+response.data.token);
+            console.log('here');
             console.log(cookies.userToken);
+            setMessage(response.status);
             console.log(response.data.message);
-            history.push("/menota");
-            window.location.reload();
         })
         .catch(function (error) {
             // handle error
             console.log(error);
         })
+        setAnimation(false);
     };
 
     function getName(e){ setName(e.target.value);}
@@ -42,18 +45,20 @@ function Login() {
                 <Link to="/"><FiArrowLeft/></Link>
                 <h1 className="">Sign up</h1>
                 <p className="">create account</p>
-                <form onSubmit={(e) => Signup(e) } autocomplete="off">
+                <form onSubmit={(e) => Signup(e) } autoComplete="off">
                     <p className="mt-3">Name</p>
-                    <input onChange={getName} autocomplete="off" className="my-2 p-1" type="text" required/>
+                    <input onChange={getName} className="my-2 p-1" type="text" required/>
 
                     <p className="mt-3">Email</p>
-                    <input onChange={getEmail} autocomplete="new-password" className="my-2 p-1" type="email" required />
+                    <input onChange={getEmail} className="my-2 p-1" type="email" required />
 
                     <p className="mt-3">Password</p>
-                    <input onChange={getPassword} name="password" className="my-2 p-1" type="password" required />
+                    <input onChange={getPassword} name="password" autoComplete="new-password" className="my-2 p-1" type="password" required />
+
+                    <div className="message">{message}</div>
 
                     <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-primary w-50 my-3">Sign up<FiLogIn/></button>
+                        <button type="submit" className="btn btn-primary w-50 my-3">{animation ? <p className="loading-spinner"></p> : <>Sign up <FiLogIn/></>}</button>
                     </div>
 
 

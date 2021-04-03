@@ -11,17 +11,21 @@ import LandingIcon from '../../svg/diary.svg';
 function Login() {
     const [cookies, setCookie,removeCookie] = useCookies(['userToken']);
     const [email,setEmail] = useState('');
+    const [message, setMessage] = useState('');
     const [password,setPassword] = useState('');
+    const [animation, setAnimation] = useState(false);
     const history = useHistory();
 
     function Login(e){
         e.preventDefault();
+        setAnimation(true);
         console.log('here');
         axios.post('https://menota-api.herokuapp.com/api/login',{email:email,password:password}).then(function (response) {
             // handle success
             setCookie('userToken','Bearer '+response.data.token);
             console.log(cookies.userToken);
-            console.log(response.data.message);
+            console.log(response.status);
+            setMessage(response.status);
             history.push("/menota");
             window.location.reload();
         })
@@ -46,10 +50,11 @@ function Login() {
 
                     <input onChange={getPassword} className="my-2 p-1" type="password" required />
 
-                    <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-primary w-50 my-3">Sign in <FiLogIn/></button>
-                    </div>
+                    <div className="message">{message}</div>
 
+                    <div className="d-flex justify-content-center">
+                        <button type="submit" className="btn btn-primary w-50 my-3 py-2" >{animation ? <p className="loading-spinner"></p> : <>Sign in <FiLogIn/></>}</button>
+                    </div>
 
                 </form>
                 <div className="link-area">

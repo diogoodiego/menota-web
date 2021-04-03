@@ -14,7 +14,7 @@ function Home() {
     function Logout() {
         axios.post('https://menota-api.herokuapp.com/api/logout').then((res) => {
             if (res.data.status_code = 200) {
-                console.log("here")
+                console.log("here");
                 removeCookie('userToken');
                 history.push("/");
                 window.location.reload();
