@@ -53,7 +53,7 @@ function Login() {
                     <input onChange={getPassword} name="password" className="my-2 p-1" type="password" required />
 
                     <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-primary w-50 my-3">Sign in <FiLogIn/></button>
+                        <button type="submit" className="btn btn-primary w-50 my-3">Sign up<FiLogIn/></button>
                     </div>
 
 
@@ -62,7 +62,7 @@ function Login() {
                     <h6 href="" className="text-center my-2"><FcGoogle/> Sign in with google</h6>
                     <h6 href="" className="text-center my-2"><SiFacebook/> Sign in with facebook</h6>
 
-                    <p className="text-center text-muted my-3">Don't have an account? <a href="">Sign up!</a></p>
+                    <p className="text-center text-muted my-3">Already have an account<a href="">Sign in!</a></p>
                 </div>
             </div>
             <div className="col side">
