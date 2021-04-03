@@ -14,7 +14,7 @@ function Routes(){
 
     console.log(userToken);
 
-    axios.get('http://localhost:8000/api/auth').then((res)=>{
+    axios.get('https://menota-api.herokuapp.com/api/auth').then((res)=>{
         if(res.status === 200){
             setLoged(true);
             console.log("true")
