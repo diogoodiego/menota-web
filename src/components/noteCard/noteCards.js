@@ -11,7 +11,7 @@ function NoteCards(){
 
     useEffect(()=>{
         function loadNotes(){
-            axios.get('https://menota-api.herokuapp.com/api/note').then((res)=>{
+            axios.get('http://localhost:8000/api/note').then((res)=>{
                 setNotes(res.data.notes);
             });
         }

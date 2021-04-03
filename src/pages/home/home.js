@@ -12,7 +12,7 @@ function Home() {
     const token = cookies.userToken;
     axios.defaults.headers.common['Authorization'] = token;
     function Logout() {
-        axios.post('https://menota-api.herokuapp.com/api/logout').then((res) => {
+        axios.post('http://localhost:8000/api/logout').then((res) => {
             if (res.data.status_code = 200) {
                 console.log("here")
                 removeCookie('userToken');
@@ -25,7 +25,7 @@ function Home() {
             });
     }
     useEffect(()=>{
-        axios.get('https://menota-api.herokuapp.com/api/perfil').then((res)=>{
+        axios.get('http://localhost:8000/api/perfil').then((res)=>{
             console.log(res.data.name.substr(0,1));
             setUserIcon(res.data.name.substr(0,1)); 
         })
