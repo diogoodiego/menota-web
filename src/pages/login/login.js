@@ -16,6 +16,7 @@ function Login() {
 
     function Login(e){
         e.preventDefault();
+        console.log('here');
         axios.post('https://menota-api.herokuapp.com/api/login',{email:email,password:password}).then(function (response) {
             // handle success
             setCookie('userToken','Bearer '+response.data.token);
