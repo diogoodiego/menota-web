@@ -1,11 +1,8 @@
-import { NoteCards} from '../../components'
-// import SideBar from '../../components/sideBar/sideBar';
+import { NoteCards, SideBar } from '../../components'
 import { useState, useEffect } from 'react';
-import { Link, useHistory } from "react-router-dom";
-import { useCookies, Cookies } from 'react-cookie';
+import { useHistory } from "react-router-dom";
+import { useCookies} from 'react-cookie';
 import axios from 'axios';
-
-import { FiPlusCircle, FiHome } from "react-icons/fi";
 import "./home.css";
 
 function Home() {
@@ -52,7 +49,7 @@ function Home() {
             </header>
             <div className="container-fluid">
                 <div id="home" className="row">
-                    {/* <SideBar/> */}
+                    <SideBar/>
                     <div className="col">
                         <div className="container pt-3">
                             <NoteCards />
