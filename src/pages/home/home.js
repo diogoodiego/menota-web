@@ -1,4 +1,5 @@
-import { NoteCards, SideBar } from '../../components'
+import { NoteCards} from '../../components'
+import SideBar from '../../components/sideBar/sideBar';
 import { useState, useEffect } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { useCookies, Cookies } from 'react-cookie';
