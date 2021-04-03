@@ -16,11 +16,11 @@ function SideBar(){
         </a>
         </h6>
         <ul className="nav flex-column mb-2">
-        <li className="nav-item">
-            <a className="nav-link" href="#">
-                <span data-feather="file-text"></span>Current month
-                </a>
-        </li>
+            <li className="nav-item">
+                <a className="nav-link" href="#">
+                    <span data-feather="file-text"></span>Current month
+                    </a>
+            </li>
         </ul>
     </div>
 )};

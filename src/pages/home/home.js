@@ -1,5 +1,5 @@
 import { NoteCards} from '../../components'
-import SideBar from '../../components/sideBar/sideBar';
+// import SideBar from '../../components/sideBar/sideBar';
 import { useState, useEffect } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { useCookies, Cookies } from 'react-cookie';
@@ -52,7 +52,7 @@ function Home() {
             </header>
             <div className="container-fluid">
                 <div id="home" className="row">
-                    <SideBar/>
+                    {/* <SideBar/> */}
                     <div className="col">
                         <div className="container pt-3">
                             <NoteCards />
