@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import "./landing.css";
-import LandingIcon from '../../svg/diary.svg';
+import LandingIcon from '../../svg/landing.svg';
 import { FiInstagram } from "react-icons/fi";
 
 function Landing(){
@@ -9,7 +9,7 @@ function Landing(){
             <div className="navbar d-flex row">
                 <div className="col"><h5>menota</h5></div>
                 <div className="col d-flex flex-row-reverse">
-                    <button className="btn btn-outline-primary">Sign up</button>
+                    <Link to="/signup" className="btn btn-outline-primary">Sign up</Link>
                     <Link className="btn" to="/login">Sign in</Link>
                 </div>
             </div>
@@ -19,7 +19,7 @@ function Landing(){
                         <h1>menota</h1>
                         <h5>note-taking app</h5>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error hic non animi aspernatur eaque, natus nisi doloremque ullam. Quo saepe assumenda voluptas fugit sint. Totam porro impedit suscipit magni saepe.</p>
-                        <button className="btn btn-primary px-4">Sign up</button>
+                        <Link to="/signup" className="btn btn-primary px-4 mt-3">Sign up</Link>
                     </div>
                     <div className="col">
                         <img className="landing-icon" src={LandingIcon} alt="" />
@@ -27,6 +27,8 @@ function Landing(){
                 </div>
             </main>
             <footer>
+                <FiInstagram/>
+                <FiInstagram/>
             </footer>
         </div>
     );

@@ -1,3 +1,5 @@
-import Sidebar from './sidebar/sidebar'
+import NoteCard from './noteCard/noteCard';
+import NoteCards from './noteCard/noteCards';
+import SideBar from './sideBar/sideBar';
 
-export {Sidebar};
+export {NoteCard, NoteCards,SideBar};

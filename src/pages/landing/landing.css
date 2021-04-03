@@ -13,6 +13,12 @@
 .landing-section footer{
     height: 10vh;
 }
+.landing-section footer svg{
+    font-size: 28px;
+    color: var(--bg-one-1);
+    margin-right: 32px;
+    cursor: pointer;
+}
 .landing-section .btn{
     color: var(--bg-one-1);
 }

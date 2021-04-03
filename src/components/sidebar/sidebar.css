@@ -1,16 +1,6 @@
-.nav-item{
-    color: var(--bg-dark);
-    transition: all ease-in-out .3s;
-    width: 100% !important;
-    cursor: pointer;
+#sidebarMenu .nav-link{
+    padding: 0;
+    margin: 0;
     display: flex;
     align-items: center;
-}
-.nav-item span{
-    margin-left: 1vw;
-}
-.nav-item:hover{
-    background-color: rgba(135, 73, 119,.02);
-    color: var(--bg-one-2);
-    border-right: solid 1px var(--bg-one-3);
 }

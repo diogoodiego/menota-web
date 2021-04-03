@@ -53,7 +53,8 @@ body{
     height: 100% !important; 
 };
 .align-center{
-    align-items: center;
+    align-items: center !important;
+    background-color: red !important;
 }
 
 /* BUTTONS */
@@ -90,4 +91,7 @@ body{
 /* TEXT */
 .menota-text{
     color: var(--text-color-neutral);
+}
+p{
+    margin-bottom: 0;
 }

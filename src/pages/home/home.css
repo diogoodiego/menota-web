@@ -1,0 +1,35 @@
+#homeNav{ 
+    height: 7vh;
+    border-bottom: 1px solid rgba(153, 100, 139, 0.2);
+    transition: all ease-in-out .3s;
+}
+#homeNav:hover{ 
+    border-bottom: 1px solid rgba(153, 100, 139, 0.4);
+}
+#homeNav input{
+    height: 70%;
+}
+#homeNav .nav-item{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#homeNav .userIcon{
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    background-color: var(--bg-one-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#homeNav .userIcon a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#home{
+    height: 92vh;
+}
