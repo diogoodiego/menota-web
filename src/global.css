@@ -87,6 +87,17 @@ body{
     color: var(--bg-lux-1) !important;
     box-shadow: 0px 10px 15px rgba(111, 61, 98, .2);
 }
+.btn-white{
+    background-color: #fff;
+    color: var(--bg-one-2) !important;
+    transition: all ease-in-out .3s;
+}
+.btn-white:hover{
+    background-color: #fff;
+    border-color: #fff;
+    color: var(--bg-one-3) !important;
+    box-shadow: 0px 5px 25px rgba(255, 255, 255, 0.2);
+}
 
 /* TEXT */
 .menota-text{

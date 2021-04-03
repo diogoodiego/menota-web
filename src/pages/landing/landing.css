@@ -25,3 +25,16 @@
 .landing-section .landing-icon{
     width: 80%;
 }
+.landing-section .wave{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: -1000 !important;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+.landing-section .wave img{
+    height: 100%;
+}
