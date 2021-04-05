@@ -27,11 +27,6 @@
     justify-content: center;
 }
 
-.login-section input{
-    background-color: transparent;
-    border: none;
-    border-bottom: solid 1px var(--bg-dark);
-}
 .login-section .loading-spinner{
     margin: 0;
     padding: 0;
@@ -47,4 +42,26 @@
     to {
             -webkit-transform: rotate(359deg);
     }
+}
+
+.login-section .input-field{
+    position: relative; 
+    height: 40px;
+}
+.login-section .input-field input{
+    height: 100%;
+    width: 100%;
+    border: none; 
+    border-bottom: solid 2px silver;
+}
+.login-section .input-field input:focus ~ label,.login-section .input-field input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 90%;
+}
+.login-section .input-field label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    pointer-events: none;
+    transition: all ease-in 0.3s;
 }

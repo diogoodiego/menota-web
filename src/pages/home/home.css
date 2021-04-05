@@ -9,13 +9,13 @@
 #homeNav input{
     height: 70%;
 }
-#homeNav .nav-item{
+#home .nav-item{
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#homeNav .userIcon{
+#home .userIcon{
     height: 32px;
     width: 32px;
     border-radius: 100%;
@@ -25,7 +25,7 @@
     align-items: center;
     cursor: pointer;
 }
-#homeNav .userIcon a{
+#home .userIcon a{
     text-decoration: none;
     color: #fff;
 }

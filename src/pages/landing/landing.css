@@ -23,7 +23,7 @@
     color: var(--bg-one-1);
 }
 .landing-section .landing-icon{
-    width: 80%;
+    width: 60%;
 }
 .landing-section .wave{
     margin: 0;
@@ -31,10 +31,13 @@
     position: absolute;
     z-index: -1000 !important;
     top: 0;
-    right: 0;
+    right: 10%;
     overflow: hidden;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .landing-section .wave img{
-    height: 100%;
+    height: 60%;
 }

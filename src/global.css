@@ -57,6 +57,10 @@ body{
     background-color: red !important;
 }
 
+input:focus, textarea:focus, select:focus, button:focus, button:active{
+    outline: none;
+}
+
 /* BUTTONS */
 .btn-primary{
     background-color: var(--bg-one-1);

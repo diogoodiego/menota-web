@@ -32,7 +32,16 @@ function Home() {
     },[]);
     return (
         <>
-            <header id="homeNav" className="p-0 m-0">
+        <div id="home" className="container-fluid m-0 p-0 h-100 bg-dark d-flex flex-column">
+            <nav className="row p-0 m-0 bg-primary">
+                <div className="col">Menota</div>
+                <div className="col">Menota</div>
+                <div className="col">Menota</div>
+            </nav>
+            <div className="bg-secondary">dwdw</div>
+        </div>
+
+            {/* <header id="homeNav" className="p-0 m-0">
                 <div className="row h-fluid p-0 m-0">
                     <div className="col-2 nav-item">
                         <a className="" href="#">Menota</a>
@@ -49,14 +58,13 @@ function Home() {
             </header>
             <div className="container-fluid">
                 <div id="home" className="row">
-                    {/* <SideBar/> */}
                     <div className="col">
                         <div className="container pt-3">
                             <NoteCards />
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* <div className="home-section container-fluid h-100 p-0 m-0 row">

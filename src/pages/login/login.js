@@ -43,12 +43,20 @@ function Login() {
             <div className="col-5 p-5">
                 <Link to="/"><FiArrowLeft/></Link>
                 <h1 className="">Welcome back!</h1>
-                <p className="">Sign in with</p>
+                <p className="mb-4">Sign in with</p>
                 <form onSubmit={(e) => Login(e) } autoSave="on">
+                    <div className="input-field mb-4">
+                        <input type="text" onChange={getEmail} required/>
+                        <label>Email</label>
+                    </div>
+                    <div className="input-field mb-4">
+                        <input onChange={getPassword} type="password" required />
+                        <label>Password</label>
+                    </div>
 
-                    <input onChange={getEmail} className="my-2 p-1" type="email" required />
+                    {/* <input onChange={getEmail} className="my-2 p-1" type="email" required />
 
-                    <input onChange={getPassword} className="my-2 p-1" type="password" required />
+                    <input onChange={getPassword} className="my-2 p-1" type="password" required /> */}
 
                     <div className="message">{message}</div>
 

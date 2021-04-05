@@ -44,16 +44,30 @@ function Login() {
             <div className="col-5 p-5">
                 <Link to="/"><FiArrowLeft/></Link>
                 <h1 className="">Sign up</h1>
-                <p className="">create account</p>
-                <form onSubmit={(e) => Signup(e) } autoComplete="off">
-                    <p className="mt-3">Name</p>
-                    <input onChange={getName} className="my-2 p-1" type="text" required/>
+                <p className="mb-4">create account</p>
+                <form onSubmit={(e) => Signup(e) } autoComplete="off" autoSave="off">
 
-                    <p className="mt-3">Email</p>
-                    <input onChange={getEmail} className="my-2 p-1" type="email" required />
+                    <div className="input-field mb-4">
+                        <input type="text" onChange={getName} required/>
+                        <label>Name</label>
+                    </div>
+                    <div className="input-field mb-4">
+                        <input type="text" onChange={getEmail} required/>
+                        <label>Email</label>
+                    </div>
+                    <div className="input-field mb-4">
+                        <input onChange={getPassword} autoComplete="new-password" type="password" required />
+                        <label>Password</label>
+                    </div>
 
-                    <p className="mt-3">Password</p>
-                    <input onChange={getPassword} name="password" autoComplete="new-password" className="my-2 p-1" type="password" required />
+                    {/* <p className="mt-3">Name</p>
+                    <input onChange={getName} className="my-2 p-1" type="text" required/> */}
+
+                    {/* <p className="mt-3">Email</p>
+                    <input onChange={getEmail} className="my-2 p-1" type="email" required /> */}
+
+                    {/* <p className="mt-3">Password</p>
+                    <input onChange={getPassword} name="password" autoComplete="new-password" className="my-2 p-1" type="password" required /> */}
 
                     <div className="message">{message}</div>
 
@@ -67,7 +81,7 @@ function Login() {
                     <h6 href="" className="text-center my-2"><FcGoogle/> Sign in with google</h6>
                     <h6 href="" className="text-center my-2"><SiFacebook/> Sign in with facebook</h6>
 
-                    <p className="text-center text-muted my-3">Already have an account<a href="">Sign in!</a></p>
+                    <p className="text-center text-muted my-3">Already have an account? <Link to="/login">Sign in!</Link></p>
                 </div>
             </div>
             <div className="col side">
