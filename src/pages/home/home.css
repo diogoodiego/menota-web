@@ -1,35 +1,32 @@
-#homeNav{ 
-    height: 7vh;
-    border-bottom: 1px solid rgba(153, 100, 139, 0.2);
-    transition: all ease-in-out .3s;
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+  right: 0;
+  */
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
-#homeNav:hover{ 
-    border-bottom: 1px solid rgba(153, 100, 139, 0.4);
+#sideBar .nav-item{
+  transition: all ease-in .4s;
+  border-left: 2px solid transparent;
 }
-#homeNav input{
-    height: 70%;
+#sideBar .nav-item:hover{
+  border-left: 2px solid var(--bg-one-2);
 }
-#home .nav-item{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.user-area{
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
-#home .userIcon{
-    height: 32px;
-    width: 32px;
-    border-radius: 100%;
-    background-color: var(--bg-one-3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-#home .userIcon a{
-    text-decoration: none;
-    color: #fff;
-}
-
-#home{
-    height: 92vh;
+.create-tag{
+  position: absolute;
+  top:10%;
+  z-index: 5000;
+  background-color: #f7f6f6;
+  left: 50%;
 }

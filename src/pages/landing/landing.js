@@ -27,7 +27,7 @@ function Landing(){
                         <div className="wave">
                             <img src={Bubble} alt=""/>
                         </div>
-                        <img className="landing-icon" src={LandingIcon} alt="" />
+                        <img className="landing-icon d-none d-md-flex" src={LandingIcon} alt="" />
                     </div>
                 </div>
             </main>

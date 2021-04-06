@@ -60,6 +60,9 @@ body{
 input:focus, textarea:focus, select:focus, button:focus, button:active{
     outline: none;
 }
+.pointer{
+    cursor: pointer;
+}
 
 /* BUTTONS */
 .btn-primary{
@@ -129,4 +132,13 @@ p{
     to {
             -webkit-transform: rotate(359deg);
     }
+}
+
+/* Z-INDEX */
+
+.z-3{
+    z-index: 3000;
+}
+.z-5{
+    z-index: 5000;
 }
