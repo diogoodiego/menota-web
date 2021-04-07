@@ -7,17 +7,21 @@ import axios from 'axios';
 import "./home.css";
 
 function Home() {
-    const [cookies, removeCookie, setCookie] = useCookies(['userToken']);
+    const [cookies, removeCookie] = useCookies(['userToken']);
     const [userIcon,setUserIcon] = useState('');
     const [Name,setName] = useState('');
     const [Email,setEmail] = useState('');
+    const [Tag,setTag] = useState([]);
+    const [Note,setNote] = useState([]);
+    const [TagTitle,setTagTitle] = useState('');
+    const [TagColor,setTagColor] = useState('');
+    const [IsOpen,setIsOpen] = useState(false);
     const history = useHistory();
     const token = cookies.userToken;
     axios.defaults.headers.common['Authorization'] = token;
     function Logout() {
         axios.post('https://menota-api.herokuapp.com/api/logout').then((res) => {
             if (res.data.status_code = 200) {
-                console.log("here");
                 removeCookie('userToken');
                 history.push("/");
                 window.location.reload();
@@ -27,18 +31,49 @@ function Home() {
                 console.log(err);
             });
     }
+    function CreateTag(e){
+        e.preventDefault();
+        axios.post('https://menota-api.herokuapp.com/api/tag',{title:TagTitle,color:TagColor}).then((res)=>{
+        })
+    }
+
+    function hadleClick(e){
+        e.preventDefault();
+        setIsOpen(!IsOpen)
+    }
     useEffect(()=>{
         axios.get('https://menota-api.herokuapp.com/api/perfil').then((res)=>{
             setName(res.data.name);
             setEmail(res.data.email);
-            console.log(res.data.name.substr(0,1));
             setUserIcon(res.data.name.substr(0,1)); 
+        });
+        axios.get('https://menota-api.herokuapp.com/api/tag').then((res)=>{
+            setTag(res.data);
+        });
+        axios.get('https://menota-api.herokuapp.com/api/note').then((res)=>{
+            setNote(res.data.notes);
+            console.log(res.data.notes);
         })
     },[]);
+    function getTagTitle(e){ setTagTitle(e.target.value);}
+    function getTagColor(e){ setTagColor(e.target.value);}
+
     return (
         <>
-        <div className="create-tag">
-            dwdwad
+        <div  className={IsOpen ? "create-tag" : "create-tag p-2 d-none" }>
+            <div class="card-header d-flex justify-content-between">
+                <p>ddwdw</p>  
+                <button onClick={hadleClick}>x</button>
+            </div>
+            <form onSubmit={(e) => CreateTag(e) } className="m-2" action="">
+                <div>
+                    <input type="text" onChange={getTagTitle} placeholder="Tittle"/>
+                </div>
+                <div>
+                    <input type="color" onChange={getTagColor} placeholder="Color"/>
+                </div>
+                <button type="submit"> crete tag</button>
+            </form>
         </div>
 
         <header class="navbar navbar-light sticky-top bg-white flex-md-nowrap p-0 border-bottom">
@@ -71,9 +106,18 @@ function Home() {
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Tags</span>
                     <a class="link-secondary" href="#" aria-label="Add a new report">
-                        <span><FiPlusCircle/></span>
+                        <span onClick={hadleClick}><FiPlusCircle/></span>
                     </a>
                 </h6>
+                <ul className="nav flex-column">
+                    {Tag.map((data) =>
+                    <li class="nav-item">
+                        <a class="nav-link active" style={{color: data.color}} aria-current="page" href="#">
+                            <span data-feather="home"></span> {data.title}
+                        </a>
+                    </li>
+                    )}
+                </ul>
                 <div className="user-area border-top w-100 row m-0 py-1">
                     <div className="col">
                         <p>{Name}</p>
@@ -83,7 +127,12 @@ function Home() {
                 </div>
                 </nav>
                 <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
+                {Note.map((data) =>
+                    <>
+                        <span>{data.title}</span>
+                        <span>{data.body}</span>
+                    </>
+                )}
                 </main>
             </div>
         </div>

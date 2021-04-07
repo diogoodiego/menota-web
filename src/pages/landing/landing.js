@@ -31,10 +31,6 @@ function Landing(){
                     </div>
                 </div>
             </main>
-            <footer>
-                <FiInstagram/>
-                <FiInstagram/>
-            </footer>
         </div>
     );
 }
