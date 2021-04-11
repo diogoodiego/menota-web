@@ -1,0 +1,30 @@
+.sidebar{
+    display: grid;
+    grid-template-rows: 1fr 1fr 9fr 1fr;
+    grid-template-areas: 'menu','options','notes','user';
+    border-right: 1px solid #e3e3e3;
+}
+.sidebar .menu > h1,h2,h3,h4,h5 p{
+    margin: 0;
+}
+.sidebar .menu i{
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.align-center{
+    align-items: center !important;
+}
+#sidebar .nav li i{
+    font-size: 95%;
+}
+#sidebar .nav li a{
+    text-decoration: none;
+    color: #333 !important;
+}
+#sidebar .nav li:hover{
+    background-color: #F7F5F5;
+}
+#sidebar .notes{
+    overflow-y: scroll;
+}

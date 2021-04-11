@@ -8,9 +8,6 @@ import "./home.css";
 
 function Home() {
     const [cookies, removeCookie] = useCookies(['userToken']);
-    const [userIcon,setUserIcon] = useState('');
-    const [Name,setName] = useState('');
-    const [Email,setEmail] = useState('');
     const [Tag,setTag] = useState([]);
     const [Note,setNote] = useState([]);
     const [TagTitle,setTagTitle] = useState('');
@@ -42,18 +39,9 @@ function Home() {
         setIsOpen(!IsOpen)
     }
     useEffect(()=>{
-        axios.get('https://menota-api.herokuapp.com/api/perfil').then((res)=>{
-            setName(res.data.name);
-            setEmail(res.data.email);
-            setUserIcon(res.data.name.substr(0,1)); 
-        });
         axios.get('https://menota-api.herokuapp.com/api/tag').then((res)=>{
             setTag(res.data);
         });
-        axios.get('https://menota-api.herokuapp.com/api/note').then((res)=>{
-            setNote(res.data.notes);
-            console.log(res.data.notes);
-        })
     },[]);
     function getTagTitle(e){ setTagTitle(e.target.value);}
     function getTagColor(e){ setTagColor(e.target.value);}
@@ -65,7 +53,9 @@ function Home() {
                 <Sidebar/>
             </div>
             <div className="col">
-                <button onClick={Logout}>logout</button>
+                <div className="container">
+                    <button onClick={Logout}>logout</button>
+                </div>
             </div>
         </div>        
         {/* <div  className={IsOpen ? "create-tag" : "create-tag p-2 d-none" }>

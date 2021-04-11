@@ -44,7 +44,6 @@ body{
 };
 .align-center{
     align-items: center !important;
-    background-color: red !important;
 }
 
 input:focus, textarea:focus, select:focus, button:focus, button:active{
