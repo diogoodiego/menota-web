@@ -31,7 +31,7 @@ function Sidebar(){
     },10000);
     return(
         <div id="sidebar" className="sidebar h-100">
-            <div className="menu px-3 d-flex justify-content-between align-center">
+            <div className="menu px-3 d-flex justify-content-between align-items-center">
                 <h4 className="title">me.nota</h4>
                 <i><FiChevronsLeft/></i>
             </div>
@@ -42,7 +42,7 @@ function Sidebar(){
                 </ul>
             </div>
             <div className="notes p-0">
-                <div className="p-0 m-0 px-3 my-2 d-flex justify-content-between align-center">
+                <div className="p-0 m-0 px-3 my-2 d-flex justify-content-between align-items-center">
                     <p>Notes</p><i onClick={NewNote} ><FiPlusSquare/></i>
                 </div>
                 <ul className="p-0 m-0 nav flex-column">
@@ -51,7 +51,7 @@ function Sidebar(){
                     )}
                 </ul>
             </div>
-            <div className="user px-3 d-flex justify-content-between align-center border-top">
+            <div className="user px-3 d-flex justify-content-between align-items-center border-top">
                 <p>{userIcon}</p>
                 <h6 className="p-0 m-0">{Name}</h6>
             </div>
