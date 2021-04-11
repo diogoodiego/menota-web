@@ -1,4 +1,4 @@
-import { NoteCards} from '../../components'
+import { NoteCards,Sidebar} from '../../components'
 import { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useCookies} from 'react-cookie';
@@ -60,7 +60,15 @@ function Home() {
 
     return (
         <>
-        <div  className={IsOpen ? "create-tag" : "create-tag p-2 d-none" }>
+        <div className="recent row container-fluid h-100 m-0 p-0">
+            <div className="col-lg-2 p-0 m-0">
+                <Sidebar/>
+            </div>
+            <div className="col">
+                <button onClick={Logout}>logout</button>
+            </div>
+        </div>        
+        {/* <div  className={IsOpen ? "create-tag" : "create-tag p-2 d-none" }>
             <div class="card-header d-flex justify-content-between">
                 <p>ddwdw</p>  
                 <button onClick={hadleClick}>x</button>
@@ -121,7 +129,6 @@ function Home() {
                 <div className="user-area border-top w-100 row m-0 py-1">
                     <div className="col">
                         <p>{Name}</p>
-                        {/* <p>{Email}</p> */}
                     </div>
                     <div className="col-4">config</div>
                 </div>
@@ -135,46 +142,7 @@ function Home() {
                 )}
                 </main>
             </div>
-        </div>
-
-            {/* <header id="homeNav" className="p-0 m-0">
-                <div className="row h-fluid p-0 m-0">
-                    <div className="col-2 nav-item">
-                        <a className="" href="#">Menota</a>
-                    </div>
-                    <div className="col nav-item">
-                        <input className="w-100 border-0 rounded-3 px-3 shadow-sm" type="text" placeholder="Search" aria-label="Search" />
-                    </div>
-                    <div className="col-1 nav-item">
-                        <div className="userIcon text-nowrap">
-                            <a className="" href="#" onClick={Logout}>{userIcon}</a>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div className="container-fluid">
-                <div id="home" className="row">
-                    <div className="col">
-                        <div className="container pt-3">
-                            <NoteCards />
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-
-            {/* <div className="home-section container-fluid h-100 p-0 m-0 row">
-                    <div className="col-2 my-nav p-0 d-flex flex-column">
-                        <a className="ps-2 active">All notes</a>
-                        <a href="#" className="ps-2" onClick={Logout}>Logout</a>
-                        <h6 className="tags"> Tags</h6>
-                    </div>
-                    <div className="col card-area">
-                        <div className="container">
-                            <NoteCards />
-                        </div>
-                    </div>
-                </div> */}
+        </div> */}
         </>
     )
 }

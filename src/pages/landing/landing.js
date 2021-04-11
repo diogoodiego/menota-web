@@ -1,14 +1,33 @@
 import {Link} from "react-router-dom";
 import "./landing.css";
-import LandingIcon from '../../svg/landing.svg';
+import LandingSvg from '../../svg/landing.svg';
 import Wave from '../../svg/background.svg';
 import Bubble from '../../svg/bubble.svg';
 import { FiInstagram } from "react-icons/fi";
 
 function Landing(){
     return(
-        <div className="landing-section container-fluid h-100 px-5 py-0 m-0">
-            <div className="navbar d-flex row">
+        <div className="container h-100">
+            <div className="py-4 d-flex justify-content-between">
+                <div>
+                    <h2 className="title">me.nota</h2>
+                </div>
+                <div className="button-group d-flex justify-content-between py-2">
+                    <Link to="/login" className="btn ms-3">sign in</Link>
+                    <Link className="btn btn-outline-primary ms-3">sign up</Link>
+                </div>
+            </div>
+            <main className="row mt-5">
+                <div className="col">
+                    <h3 className="mt-5 mb-3">Improve your notes</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et eos, rem amet optio repudiandae perferendis doloremque labore praesentium. Quisquam alias laborum praesentium magnam assumenda omnis magni provident dolore molestiae optio?</p>
+                    <Link to="/signup" className="btn btn-primary mt-5">Sign up free</Link>    
+                </div>
+                <div className="col d-none d-md-block">
+                    <img className="landing-image" src={LandingSvg} alt="" />
+                </div>
+            </main>
+            {/* <div className="navbar d-flex row">
                 <div className="col"><h5>menota</h5></div>
                 <div className="col d-flex flex-row-reverse">
                     <Link to="/signup" className="btn btn-primary ms-3">Sign up</Link>
@@ -30,7 +49,7 @@ function Landing(){
                         <img className="landing-icon d-none d-md-flex" src={LandingIcon} alt="" />
                     </div>
                 </div>
-            </main>
+            </main> */}
         </div>
     );
 }

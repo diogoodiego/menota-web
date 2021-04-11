@@ -1,43 +1,11 @@
-.landing-section .navbar{
-    height: 10vh;
+h1, h2, h3,h4,h4,h6 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
 }
-.landing-section main{
-    height: 80vh;
-    display: flex;
-    align-items: center;
+.title{
+    font-family: 'Courier Prime', monospace !important;
+    font-weight: 400;
 }
-.landing-section main .row{
-    display: flex;
-    align-items: center;
-}
-.landing-section footer{
-    height: 10vh;
-}
-.landing-section footer svg{
-    font-size: 28px;
-    color: var(--bg-one-1);
-    margin-right: 32px;
-    cursor: pointer;
-}
-.landing-section .btn{
-    color: var(--bg-one-1);
-}
-.landing-section .landing-icon{
-    width: 60%;
-}
-.landing-section .wave{
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: -1000 !important;
-    top: 0;
-    right: 10%;
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.landing-section .wave img{
-    height: 60%;
+.landing-image{
+    width: 100%;
 }
