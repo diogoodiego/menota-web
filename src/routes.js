@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import {useCookies, CookiesProvider} from 'react-cookie';
-import {Home, Login, Landing, Signup} from './pages'
+import {Home, Login, Landing, Signup, Notes} from './pages'
 import axios from 'axios';
 import './global.css'
 
@@ -12,16 +12,12 @@ function Routes(){
 
     axios.defaults.headers.common['Authorization'] = userToken;
 
-    console.log(userToken);
-
     axios.get('https://menota-api.herokuapp.com/api/auth').then((res)=>{
         if(res.status === 200){
             setLoged(true);
-            console.log("true")
         }
         else{
             setLoged(false);
-            console.log("false")
         }
     })
 
@@ -31,6 +27,9 @@ function Routes(){
             <Switch>
                 <Route path="/menota">
                     {loged ? <Home/>:<Redirect to="/login" />}
+                </Route>
+                <Route path="/notes">
+                    {loged ? <Notes/>:<Redirect to="/login" />}
                 </Route>
                 <Route path="/login">
                     {loged ? <Redirect to="/menota" /> : <Login/>}

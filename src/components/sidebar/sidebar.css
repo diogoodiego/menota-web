@@ -26,5 +26,5 @@
     background-color: #F7F5F5;
 }
 #sidebar .notes{
-    overflow-y: scroll;
+    overflow-y: auto;
 }
