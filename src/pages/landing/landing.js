@@ -1,9 +1,6 @@
 import {Link} from "react-router-dom";
 import "./landing.css";
 import LandingSvg from '../../svg/landing.svg';
-import Wave from '../../svg/background.svg';
-import Bubble from '../../svg/bubble.svg';
-import { FiInstagram } from "react-icons/fi";
 
 function Landing(){
     return(

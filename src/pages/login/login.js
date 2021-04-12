@@ -1,7 +1,7 @@
 import {React,useState} from "react";
 import axios from 'axios';
-import {Link,Redirect,useHistory} from "react-router-dom";
-import { useCookies, Cookies } from 'react-cookie';
+import {Link,useHistory} from "react-router-dom";
+import { useCookies } from 'react-cookie';
 import { FcGoogle} from "react-icons/fc";
 import { FiLogIn,FiArrowLeft } from "react-icons/fi";
 import { SiFacebook } from "react-icons/si";
@@ -9,7 +9,7 @@ import './login.css'
 import LandingIcon from '../../svg/diary.svg';
 
 function Login() {
-    const [cookies, setCookie,removeCookie] = useCookies(['userToken']);
+    const [cookies, setCookie] = useCookies(['userToken']);
     const [email,setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [password,setPassword] = useState('');

@@ -7,19 +7,27 @@ import './global.css'
 
 function Routes(){
     const [cookies] = useCookies(['userToken']);
-    const [loged,setLoged] = useState();
+    const [loged,setLoged] = useState(false);
     let userToken = cookies.userToken;
 
     axios.defaults.headers.common['Authorization'] = userToken;
 
-    axios.get('https://menota-api.herokuapp.com/api/auth').then((res)=>{
-        if(res.status === 200){
-            setLoged(true);
-        }
-        else{
-            setLoged(false);
-        }
-    })
+    function AuthVerification(e){
+        axios.get('https://menota-api.herokuapp.com/api/auth').then((res)=>{
+            if(res.status === 200){
+                setLoged(true);
+            }
+            else{
+                setLoged(false);
+            }
+        })
+    }
+
+    if(userToken !== "undefined"){
+        AuthVerification();
+    }
+
+
 
     return(
         <CookiesProvider>

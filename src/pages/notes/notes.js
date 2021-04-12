@@ -1,64 +1,31 @@
-import { NoteCards,Sidebar, ShowNote, NoteList} from '../../components'
-import { useState, useEffect } from 'react';
-import { useHistory, useLocation  } from "react-router-dom";
+import {Sidebar, ShowNote} from '../../components'
+import { useState} from 'react';
 import { useCookies} from 'react-cookie';
-import { FiPlusCircle } from "react-icons/fi";
+import { useLocation  } from "react-router-dom";
+// import { FiPlusCircle } from "react-icons/fi";
 import axios from 'axios';
 import "./notes.css";
 
 function Notes(props) {
     const [cookies, removeCookie] = useCookies(['userToken']);
-    const [Tag,setTag] = useState([]);
-    const [Note,setNote] = useState([]);
-    const [TagTitle,setTagTitle] = useState('');
-    const [TagColor,setTagColor] = useState('');
-    const [IsOpen,setIsOpen] = useState(false);
-    const history = useHistory();
-    const location = useLocation();
     const token = cookies.userToken;
     axios.defaults.headers.common['Authorization'] = token;
-    function Logout() {
-        axios.post('https://menota-api.herokuapp.com/api/logout').then((res) => {
-            if (res.data.status_code = 200) {
-                removeCookie('userToken');
-                history.push("/");
-                window.location.reload();
-            }
-        })
-            .catch((err) => {
-                console.log(err);
-            });
-    }
-    function CreateTag(e){
-        e.preventDefault();
-        axios.post('https://menota-api.herokuapp.com/api/tag',{title:TagTitle,color:TagColor}).then((res)=>{
-        })
-    }
+
+    const location = useLocation();
+
+    const [IsOpen,setIsOpen] = useState(false);
 
     function hadleClick(e){
         e.preventDefault();
         setIsOpen(!IsOpen)
     }
-    useEffect(()=>{
-        axios.get('https://menota-api.herokuapp.com/api/tag').then((res)=>{
-            setTag(res.data);
-        });
-    },[]);
-    console.log(location.state.data)
-
-    function getTagTitle(e){ setTagTitle(e.target.value);}
-    function getTagColor(e){ setTagColor(e.target.value);}
-
     return (
         <>
         <div className="recent row container-fluid h-100 m-0 p-0">
-            <div className="col-lg-2 p-0 m-0">
-                <Sidebar/>
-            </div>
+            <Sidebar/>
             <div className="col">
                 <div className="container">
                     <ShowNote data={location.state.data}/>
-                    <button onClick={Logout}>logout</button>
                 </div>
             </div>
         </div>        
