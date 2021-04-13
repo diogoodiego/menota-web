@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react';
-import {Link, useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useCookies } from 'react-cookie';
-// import {NoteList} from '../../components';
 import axios from 'axios';
 
-import { FiChevronsLeft,FiSearch,FiClock,FiPlusSquare} from "react-icons/fi";
+import { FiChevronsLeft, FiChevronsRight, FiSearch, FiClock, FiPlusSquare } from "react-icons/fi";
+import { HiMenuAlt2 } from "react-icons/hi";
 
 import './sidebar.css';
 import NoteList from '../note/notelist';
 
-function Sidebar(){
-    const [Name,setName] = useState('');
-    const [userIcon,setUserIcon] = useState('');
+function Sidebar() {
+    const [Name, setName] = useState('');
+    const [userIcon, setUserIcon] = useState('');
     const [Notes, getNotes] = useState([]);
-    const [cookies, removeCookie] = useCookies(['userToken']);
+    const [removeCookie] = useCookies(['userToken']);
+    const [SidebarOpen, setSidebarOpen] = useState(false);
+    const [Hovered, setHovered] = useState(true);
     let history = useHistory();
 
-    function NewNote(){
-        axios.post('https://menota-api.herokuapp.com/api/note',{title:`Untitled note ${"#"+Notes.length}`,body:"Type something"}).then((res)=>{
+    function NewNote() {
+        axios.post('https://menota-api.herokuapp.com/api/note', { title: `Untitled note ${"#" + Notes.length}`, body: "Type something ..." }).then((res) => {
             history.push("/");
             history.replace('/menota');
         });
@@ -25,49 +27,88 @@ function Sidebar(){
 
     function Logout() {
         axios.post('https://menota-api.herokuapp.com/api/logout').then((res) => {
-            if (res.data.status_code = 200) {
-                removeCookie('userToken');
-                history.push("/login");
-                window.location.reload();
-            }
+            removeCookie('userToken');
+            history.push("/login");
+            window.location.reload();
         })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     }
-    useEffect(()=>{
-        axios.get('https://menota-api.herokuapp.com/api/perfil').then((res)=>{
+    function MouseEnter() {
+        setHovered(true);
+    }
+    function MouseLeave() {
+        setHovered(false);
+    }
+
+    function handleClick() {
+        setSidebarOpen(!SidebarOpen);
+    }
+
+    useEffect(() => {
+        axios.get('https://menota-api.herokuapp.com/api/perfil').then((res) => {
             setName(res.data.name);
-            setUserIcon(res.data.name.substr(0,1)); 
+            setUserIcon(res.data.name.substr(0, 1));
         });
-        axios.get('https://menota-api.herokuapp.com/api/note').then((res)=>{
+        axios.get('https://menota-api.herokuapp.com/api/note').then((res) => {
             getNotes(res.data.notes);
         });
-    },[]);
+    }, []);
 
-    return(
-        <div id="sidebar" className="sidebar h-100 col-lg-2 p-0 m-0 d-none d-lg-grid">
-            <div className="menu px-3 d-flex justify-content-between align-items-center">
-                <h4 className="title">me.nota</h4>
-                <i><FiChevronsLeft/></i>
-            </div>
-            <div className="options p-0 m-0">
-                <ul className="p-0 m-0 nav flex-column" >
-                    <li className="px-3 mb-1 p-1 d-flex align-baseline"><i><FiSearch/></i><a>Search</a></li>
-                    <li className="px-3 mb-1 p-1 d-flex align-baseline"><i><FiClock/></i><Link to="/menota">Recent</Link></li>
-                </ul>
-            </div>
-            <div className="notes p-0">
-                <div className="p-0 m-0 px-3 my-2 d-flex justify-content-between align-items-center">
-                    <p>Notes</p><i onClick={NewNote} ><FiPlusSquare/></i>
+    return (
+        <>
+            {SidebarOpen ?
+                <div id="sidebar" className="sidebar border-end h-100 col-lg-2 p-0 m-0 d-none d-lg-grid">
+                    <div className="navegation p-0 m-0 py-2">
+                        <h5 className="title border-bottom px-3">me.nota</h5>
+                        <ul className="nav flex-column p-0 m-0 px-3" >
+                            <li className="mb-1 d-flex align-baseline"><i><FiSearch /></i><Link to="/menota">Search</Link></li>
+                            <li className="mb-1 d-flex align-baseline"><i><FiClock /></i><Link to="/menota">Recent</Link></li>
+                        </ul>
+                        <p className=" p-0 px-3 mt-1">Notes</p>
+                    </div>
+                    <div className="notes p-0 m-0 px-3 overflow-auto">
+                        <NoteList />
+                    </div>
+                    <div className="note-btn px-3 py-2 d-flex justify-content-center align-items-center border-top">
+                        <button onClick={NewNote} className="btn btn-primary w-100">Add note</button>
+                    </div>
+                    <div className="options px-3 d-flex justify-content-between align-items-center border-top">
+                        <p onClick={Logout}>{userIcon}</p>
+                        <h6 onClick={Logout} className="p-0 m-0">{Name}</h6>
+                    </div>
                 </div>
-                <NoteList/>
-            </div>
-            <div className="user px-3 d-flex justify-content-between align-items-center border-top">
-                <p onClick={Logout}>{userIcon}</p>
-                <h6 onClick={Logout} className="p-0 m-0">{Name}</h6>
-            </div>
-        </div>
+                :
+                <>
+                    <div className="handler w-25 p-0 m-0 d-flex position-fixed top-0 start-0 z-3">
+                        <i onMouseEnter={MouseEnter}  className="menu-icon m-2 mb-3" onClick={handleClick}>{Hovered ? <FiChevronsRight /> : <HiMenuAlt2 />}</i>
+                    </div>
+                    <div onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} className={Hovered? "col-lg-2 p-0 m-0 h-100 position-absolute top-0 start-0 d-flex align-items-center" : "col-lg-2 p-0 m-0 h-100 position-absolute top-0 start-0 d-flex align-items-center d-none " } >
+                        <div className="sidebar sidebar-fix ms-2 rounded-3">
+                            <div className="navegation p-0 m-0 px-3 py-2">
+                                <h5 className="title">me.nota</h5>
+                                <ul className="nav flex-column p-0 m-0" >
+                                    <li className="mb-1 d-flex align-baseline"><i><FiSearch /></i><Link to="/menota">Search</Link></li>
+                                    <li className="mb-1 d-flex align-baseline"><i><FiClock /></i><Link to="/menota">Recent</Link></li>
+                                </ul>
+                                <p className="note-title">Notes</p>
+                            </div>
+                            <div className="notes p-0 m-0 px-3 overflow-auto">
+                                <NoteList />
+                            </div>
+                            <div className="note-btn px-3 py-2 d-flex justify-content-center align-items-center border-top">
+                                <button onClick={NewNote} className="btn btn-primary w-100">Add note</button>
+                            </div>
+                            <div className="options p-0 px-3 d-flex justify-content-between align-items-center border-top">
+                                <p onClick={Logout}>{userIcon}</p>
+                                <h6 onClick={Logout} className="p-0 m-0">{Name}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
+        </>
     );
 }
 

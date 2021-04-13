@@ -52,7 +52,6 @@ input:focus, textarea:focus, select:focus, button:focus, button:active{
 .pointer{
     cursor: pointer;
 }
-
 /* BUTTONS */
 .btn-primary{
     transition: all ease-in .3s;
@@ -115,4 +114,11 @@ p{
 }
 .z-5{
     z-index: 5000;
+}
+.z-negative{
+    z-index: -1000;
+}
+
+h1,h2,h3,h4,h5,h6, p{
+    z-index: 1000;
 }

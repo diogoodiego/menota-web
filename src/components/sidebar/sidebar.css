@@ -1,30 +1,41 @@
-.sidebar{
-    display: grid;
-    grid-template-rows: 1fr 1fr 9fr 1fr;
-    grid-template-areas: 'menu','options','notes','user';
-    border-right: 1px solid #e3e3e3;
-}
-.sidebar .menu > h1,h2,h3,h4,h5 p{
-    margin: 0;
-}
-.sidebar .menu i{
+.menu-icon{
+    font-size: 1.4rem;
+    height: 32px;
+    width: 32px;
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    justify-content: center;
+    cursor: pointer;
+    transition: all ease-in-out .3s;
 }
-.align-items-center{
-    align-items: center !important;
+.menu-icon svg{
+    vertical-align: baseline;
 }
-#sidebar .nav li i{
-    font-size: 95%;
-}
-#sidebar .nav li a{
-    text-decoration: none;
-    color: #333 !important;
-}
-#sidebar .nav li:hover{
+.menu-icon:hover{
     background-color: #F7F5F5;
 }
-#sidebar .notes{
-    overflow-y: auto;
+.sidebar{
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr 1fr .7fr;
+    grid-template-areas: "navegation" "notes" "note-btn" "options";
+}
+.sidebar-fix{
+    width: 100%;
+    height: 80vh;
+    box-shadow: 0px 0px 16px rgba(0,0,0,.1);
+}
+
+.navegation{
+    grid-area: navegation;
+}
+.notes{
+    grid-area: notes;
+}
+.note-btn{
+    grid-area: note-btn;
+}
+.options{
+    grid-area: options;
 }

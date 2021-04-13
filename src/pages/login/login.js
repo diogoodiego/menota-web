@@ -9,7 +9,7 @@ import './login.css'
 import LandingIcon from '../../svg/diary.svg';
 
 function Login() {
-    const [cookies, setCookie] = useCookies(['userToken']);
+    const [setCookie] = useCookies(['userToken']);
     const [email,setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [password,setPassword] = useState('');
@@ -23,8 +23,6 @@ function Login() {
         axios.post('https://menota-api.herokuapp.com/api/login',{email:email,password:password}).then(function (response) {
             // handle success
             setCookie('userToken','Bearer '+response.data.token);
-            console.log(cookies.userToken);
-            console.log(response.status);
             setMessage(response.status);
             history.push("/menota");
             window.location.reload();
