@@ -39,3 +39,10 @@
 .options{
     grid-area: options;
 }
+.nav-item{
+    color: #666;
+    text-decoration: none;
+}
+.nav-item:hover{
+    color: #333;
+}
