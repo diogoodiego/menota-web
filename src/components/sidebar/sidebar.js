@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
-import { FiChevronsLeft, FiChevronsRight, FiSearch, FiClock, FiPlusSquare } from "react-icons/fi";
+import { FiChevronsLeft, FiChevronsRight, FiSearch, FiClock } from "react-icons/fi";
 import { HiMenuAlt2 } from "react-icons/hi";
 
 import './sidebar.css';

@@ -1,15 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap');
+
 :root{
     --bg-dark: #272628;
-    --primary-color: #6D2EBF;
+    --primary-color: #9B3AC9;
     --primary-color-hover: #853FD4;
     --primary-color-active: #572B9E;
+    --text-secondary:#3F3D56;
+    --background-primary: linear-gradient(92.4deg, #BA29FF 3.47%, #921CC9 106.63%);
+    --shadow-sm: 2px 4px 8px rgba(45, 43, 61, 0.16);
+    --shadow-lg: 2px 8px 16px rgba(45, 43, 61, 0.28);
 }
 body{
     font-size: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
 /* HTML tags */
-
+h1,h2,h3,h4,h5,h6{
+    font-weight: 700;
+}
 /* BORDERS */
 .border-dark-1{
     border: solid 1px var(--bg-dark-light);
@@ -42,46 +52,31 @@ body{
 .h-fluid{
     height: 100% !important; 
 };
-.align-center{
+.align-items-center{
     align-items: center !important;
 }
 
 input:focus, textarea:focus, select:focus, button:focus, button:active{
     outline: none;
 }
+/* BUTTONS */
 .pointer{
     cursor: pointer;
 }
-/* BUTTONS */
+
+.btn, a{
+    text-decoration: none;
+    transition: all ease-in .3s !important;
+}
 .btn-primary{
-    transition: all ease-in .3s;
-    background-color: var(--primary-color);
-    border:none;
+    border:none !important;
+    border-radius: 100rem;
+    background: var(--background-primary);
+    box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover{
-    background-color: var(--primary-color-hover);
-    border:none;
+    box-shadow: var(--shadow-lg);
 }
-.btn-primary:active, .btn-primary:focus{
-    background-color: var(--primary-color-active);
-    border:none;
-}
-.btn-outline-primary{
-    transition: all ease-in .3s;
-    border:1px solid var(--primary-color);
-    color: var(--primary-color);
-}
-.btn-outline-primary:hover{
-    border:1px solid var(--primary-color-hover);
-    background-color: var(--primary-color-hover);
-    color: #fff;
-}
-.btn-outline-primary:active, .btn-outline-primary:focus{
-    border:1px solid var(--primary-color-active);
-    background-color: var(--primary-color-active);
-}
-
-
 /* TEXT */
 p{
     margin-bottom: 0;
