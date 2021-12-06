@@ -14,8 +14,8 @@ function Sidebar() {
     const [userIcon, setUserIcon] = useState('');
     const [Notes, getNotes] = useState([]);
     const [removeCookie] = useCookies(['userToken']);
-    const [SidebarOpen, setSidebarOpen] = useState(true);
-    const [Hovered, setHovered] = useState(false);
+    const [SidebarOpen, setSidebarOpen] = useState(false);
+    const [Hovered, setHovered] = useState(true);
     let history = useHistory();
 
     function NewNote() {
@@ -61,17 +61,14 @@ function Sidebar() {
             {SidebarOpen ?
                 <div id="sidebar" className="sidebar border-end h-100 col-lg-2 p-0 m-0 d-none d-lg-grid">
                     <div className="navegation p-0 m-0 py-2">
-                        <div className="title px-3 border-bottom d-flex justify-content-between align-center">
-                            <h5 className="title">me.nota</h5>
-                            <i className="" onClick={handleClick}><FiChevronsLeft/></i>
-                        </div>
-                        <ul className="nav flex-column pt-3 p-0 m-0 px-3" >
-                            <li className="mb-2 d-flex align-baseline"><i><FiSearch /></i><Link className="nav-item" to="/menota">Search</Link></li>
-                            <li className="mb-2 d-flex align-baseline"><i><FiClock /></i><Link className="nav-item" to="/menota">Recent</Link></li>
+                        <h5 className="title border-bottom px-3">me.nota</h5>
+                        <ul className="nav flex-column p-0 m-0 px-3" >
+                            <li className="mb-1 d-flex align-baseline"><i><FiSearch /></i><Link to="/menota">Search</Link></li>
+                            <li className="mb-1 d-flex align-baseline"><i><FiClock /></i><Link to="/menota">Recent</Link></li>
                         </ul>
                         <p className=" p-0 px-3 mt-1">Notes</p>
                     </div>
-                    <div className="notes p-0 m-0 px-3 overflow-auto"> 
+                    <div className="notes p-0 m-0 px-3 overflow-auto">
                         <NoteList />
                     </div>
                     <div className="note-btn px-3 py-2 d-flex justify-content-center align-items-center border-top">
@@ -85,7 +82,7 @@ function Sidebar() {
                 :
                 <>
                     <div className="handler w-25 p-0 m-0 d-flex position-fixed top-0 start-0 z-3">
-                        <i onMouseEnter={MouseEnter}  className="menu-icon rounded-3 m-2 mb-3" onClick={handleClick}>{Hovered ? <FiChevronsRight /> : <HiMenuAlt2 />}</i>
+                        <i onMouseEnter={MouseEnter}  className="menu-icon m-2 mb-3" onClick={handleClick}>{Hovered ? <FiChevronsRight /> : <HiMenuAlt2 />}</i>
                     </div>
                     <div onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} className={Hovered? "col-lg-2 p-0 m-0 h-100 position-absolute top-0 start-0 d-flex align-items-center" : "col-lg-2 p-0 m-0 h-100 position-absolute top-0 start-0 d-flex align-items-center d-none " } >
                         <div className="sidebar sidebar-fix ms-2 rounded-3">
